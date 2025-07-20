@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Автоматизированная станция с Gemini</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+			background-color: #2c2c2c;
+			color: #e0e0e0;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			background-color: #3a3a3a;
+			padding: 20px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+			border: 1px solid #4a4a4a;
+		}
+		h1 {
+			text-align: center;
+			color: #66b3ff;
+			margin-bottom: 30px;
+		}
+		h2 {
+			color: #66b3ff;
+			margin-top: 30px;
+			margin-bottom: 15px;
+		}
+		.section-block {
+			background-color: #3a3a3a;
+			border: 1px solid #4a4a4a;
+			padding: 20px;
+			border-radius: 8px;
+			margin-bottom: 20px;
+			box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+		}
+		.chat-display {
+			background-color: #444;
+			border: 1px solid #555;
+			padding: 15px;
+			height: 400px;
+			overflow-y: auto;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			border-radius: 4px;
+			color: #e0e0e0;
+		}
+		.form-group { margin-bottom: 15px; }
+		label { display: block; margin-bottom: 5px; font-weight: bold; }
+		input[type="text"], textarea {
+			width: calc(100% - 22px);
+			padding: 10px;
+			border: 1px solid #666;
+			border-radius: 4px;
+			font-size: 16px;
+			background-color: #555;
+			color: #e0e0e0;
+		}
+		textarea {
+			resize: vertical;
+			min-height: 300px;
+		}
+		button {
+			background-color: #007bff;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+			transition: background-color 0.3s ease;
+		}
+		button:hover { background-color: #0056b3; }
+		#serverResponse {
+			padding: 10px;
+			border: 1px solid #666;
+			background-color: #444;
+			min-height: 30px;
+			max-height: 150px;
+			overflow-y: auto;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			border-radius: 4px;
+		}
+		.success-message { color: #28a745; }
+		.error-message { color: #dc3545; }
+		.validation-feedback {
+			margin-top: 5px;
+			font-size: 0.9em;
+			min-height: 1.2em;
+		}
+		.validation-feedback.red { color: #dc3545; }
+		.validation-feedback.green { color: #28a745; }
+		.validation-feedback.yellow { color: #ffff00; }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Автоматизированная станция с Gemini</h1>
+
+		<div class="section-block">
+			<h2>История чата</h2>
+			<div class="chat-display" id="chatDisplay"></div>
+		</div>
+
+		<div class="section-block">
+			<h2>Пользовательский ввод</h2>
+			<form id="messageForm">
+				<div class="form-group">
+					<label for="username">Имя:</label>
+					<input type="text" id="usernameInput" name="username">
+					<div id="usernameFeedback" class="validation-feedback"></div>
+				</div>
+				<div class="form-group">
+					<label for="password">Пароль:</label>
+					<input type="password" id="passwordInput" name="password">
+					<div id="passwordFeedback" class="validation-feedback"></div>
+				</div>
+				<div class="form-group">
+					<label for="message">Сообщение:</label>
+					<textarea id="messageInput" name="message"></textarea>
+					<div id="messageFeedback" class="validation-feedback"></div>
+				</div>
+				<button type="submit">Отправить</button>
+			</form>
+		</div>
+
+		<div class="section-block">
+			<h2>Ответ сервера</h2>
+			<div id="serverResponse"></div>
+		</div>
+	</div>
+
+	<script src="client.js"></script>
+</body>
+</html>
