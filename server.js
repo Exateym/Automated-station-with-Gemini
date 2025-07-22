@@ -1290,7 +1290,7 @@ async function main() {
 				geminiApiKey = null;
 			} else if (error.message.includes('You exceeded your current quota')) {
 				description = `${feedback} Достигнут лимит по запросам для ключа «${geminiApiKey}».`;
-				tryChangeApiKey(geminiApiKey);
+				geminiApiKey = tryChangeApiKey(geminiApiKey);
 			}
 			if (description !== null) {
 				console.error(description);
